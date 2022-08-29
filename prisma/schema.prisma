@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Form {
+  id            String   @id
+  description   String
+  stringfy_json String?
+  created_at    String
+  updated_at    DateTime @updatedAt()
+}
+
+model Question {
+  id              String  @id
+  origin_form_id  String
+  description     String
+  unique_response Boolean
+  type            String
+  placeholder     String?
+  order           Int
+  created_at      String
+}
+
+model Option {
+  id                 String @id
+  origin_response_id String
+  description        String
+  order              Int
+  created_at         String
+}
