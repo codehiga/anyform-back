@@ -12,6 +12,11 @@ export class FormController {
     return this.formService.list();
   }
 
+  @Get(':id')
+  one(@Param('id') id: string): Promise<FormVO> {
+    return this.formService.one(id);
+  }
+
   @Post()
   add(@Body() form: CreateFormDTO): Promise<FormVO> {
     return this.formService.add(form);

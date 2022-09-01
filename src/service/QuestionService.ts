@@ -16,8 +16,12 @@ export class QuestionService {
     return this.questionDAO.add(question);
   }
 
-  async list(id: string): Promise<QuestionVO[]> {
-    return this.questionDAO.list(id);
+  async list(): Promise<QuestionVO[]> {
+    return this.questionDAO.list();
+  }
+
+  async listByFormId(id: string): Promise<QuestionVO[]> {
+    return this.questionDAO.listByFormId(id);
   }
 
   async one(id: string): Promise<QuestionVO> {
@@ -26,5 +30,9 @@ export class QuestionService {
 
   async update(id: string, question: UpdateQuestionDTO): Promise<QuestionVO> {
     return await this.questionDAO.update(id, question);
+  }
+
+  async delete(id: string): Promise<QuestionVO> {
+    return await this.questionDAO.delete(id);
   }
 }

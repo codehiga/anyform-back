@@ -13,7 +13,13 @@ export class QuestionDAO implements QuestionRepository {
     return response;
   }
 
-  async list(id: string) {
+  async list() {
+    let response = await this.prisma.question.findMany();
+
+    return response;
+  }
+
+  async listByFormId(id: string) {
     let response = await this.prisma.question.findMany({
       where: {
         origin_form_id: id,
@@ -40,6 +46,15 @@ export class QuestionDAO implements QuestionRepository {
       data: question,
     });
 
+    return response;
+  }
+
+  async delete(id: string) {
+    let response = await this.prisma.question.delete({
+      where: {
+        id,
+      },
+    });
     return response;
   }
 }

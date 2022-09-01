@@ -28,7 +28,7 @@ model Question {
 
 model Option {
   id                 String @id
-  origin_response_id String
+  origin_question_id String
   description        String
   order              Int
   created_at         String

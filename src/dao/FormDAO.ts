@@ -10,6 +10,14 @@ export class FormDAO implements FormRepository {
     return this.prisma.form.findMany();
   }
 
+  async one(id: string): Promise<FormVO> {
+    return this.prisma.form.findUnique({
+      where: {
+        id,
+      },
+    });
+  }
+
   async add(form: CreateFormDTO): Promise<FormVO> {
     const response = await this.prisma.form.create({
       data: form,
